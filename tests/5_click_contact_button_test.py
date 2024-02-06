@@ -7,8 +7,8 @@ class ContactTestCase(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        options = webdriver.FirefoxOptions()
-        options.add_argument('--headless')
+        option = webdriver.FirefoxOptions()
+        option.add_argument('--headless')
         self.browser = webdriver.Firefox(options=option)
         try:
             self.url = os.environ['URL']
