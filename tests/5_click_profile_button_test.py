@@ -29,19 +29,19 @@ class ProfileTestCase(unittest.TestCase):
 
     def test_2_login_with_credentials(self):
         # Masukkan username dan password
-        self.browser.find_element(By.XPATH, "//*[@id='inputUsername']").send_keys('admin')
-        self.browser.find_element(By.XPATH, "//*[@id='inputPassword']").send_keys('nimda666!')
-        self.browser.find_element(By.XPATH, "/html/body/form/button").click()
+        self.browser.find_element(By.ID, 'inputUsername').send_keys('admin')
+        self.browser.find_element(By.ID, 'inputPassword').send_keys('nimda666!')
+        self.browser.find_element(By.TAG_NAME, 'button').click()
 
         # Verifikasi bahwa login berhasil
         expected_result = "Halo, admin"
-        actual_result = self.browser.find_element(By.XPATH, "/html/body/div[1]/h2").text
+        actual_result = self.browser.find_element(By.XPATH, "//h2[contains(text(),'Halo')]").text
         self.assertIn(expected_result, actual_result)
 
     def test_3_profile_click(self):
         expected_result = "Profil"
-        self.browser.find_element(By.XPATH, "/html/body/div[1]/div[1]/div/div/a[1]").click()
-        actual_result = self.browser.find_element(By.XPATH, "/html/body/div[1]/h2").text
+        self.browser.find_element(By.XPATH, "//a[contains(text(),'Profile')]").click()
+        actual_result = self.browser.find_element(By.XPATH, "//h2[contains(text(),'Profile')]").text
         self.assertIn(expected_result, actual_result)
 
     @classmethod
